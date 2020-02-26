@@ -29,82 +29,60 @@ def get_current_balance():
         balance = f.readlines()
         for b in balance:
             current_balance += float(b)
-    return f"Your current balance is: $ {round(float(current_balance), 2)}"
+    return current_balance
 
 # make a withdraw
 def withdraw(debit):
     message = ''
     debit = float(debit)
-    current_balance = float(get_current_balance())
-    if debit < current_balance:
+    current_balance = get_current_balance()
+    current_balance = float(current_balance)
+    if debit <= current_balance:
         with open(filename, 'a') as f:
             f.write(f'\n{-debit}')
-        message = get_current_balance()
     else:
-        message = -1 
-    return message
+        return print("Insuffient Funds")
+    
  
 # make a deposit
 def credit(deposit):
     message = ''
     deposit = float(deposit)
-    current_balance = float(get_current_balance())
-    if deposit > 0:
+    current_balance = get_current_balance()
+    if deposit >= 1:
         with open(filename, "a") as f:
             f.write(f'\n{deposit}')
-        message = get_current_balance()
-    else: # current not working
-        message = -1
-    return message
+    else:
+        return print("You entered a value ")
 
-
+# this function prints the menu
 def menu():
     print('What would you like to do?')
     print()
-    print('1) view current balance\n\
-    2) record a debit (withdraw)\n\
-    3) record a credit (deposit)\n\
-    4) exit')
-    print(f'You entered {type(prompt)}')
-    return prompt
+    print('1) view current balance\n2) record a debit (withdraw)\n3) record a credit (deposit)\n4) exit\n\n')
 
 # start of main
-
-    
 
 print()
 print("~~~ Welcome to your terminal checkbook!~~~")
 print()
 while user_choice == True:
     menu()
-    prompt = input(': ')
+    prompt = input('Your choice? ')
     while prompt not in ['1', '2', '3', '4']:
-        print("Not a valid entry!")
+        print(f"\nInvalid choice: {prompt}")
         menu()
-        prompt = input(': ')
-    
+        prompt = input('\nYour choice? ')
+        
+    print()
     if prompt == '1':
-        get_current_balance()
+        print(f'Your current balance is ${get_current_balance()}\n\n')
     elif prompt == '2':
         debit = input("How much is the debit? $")
-        resp = withdraw(debit)
-        while resp == -1:
-            print('You do not have enough in account to cover this withdraw.')
-            debit = input("How much is the debit? $")
-            resp = withdraw(debit)
-        print(resp)
+        withdraw(debit)
     elif prompt == '3':
         deposit = input("How much is the deposit? $")
-        resp = credit(deposit)
-        while resp == -1:
-            print('You enter a dollar amount of less then or equal to 0')
-            deposit = input("How much is the deposit? $")
-            resp = credit(deposit)
-        print(resp)
+        credit(deposit)
     else:
         user_choice = False
-print("Thanks, have a great day")
-        
-            
-        
-        
+print("\nThanks, have a great day!")
