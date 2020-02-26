@@ -20,7 +20,7 @@ user_choice = True
 if not path.exists(filename):
     with open(filename, "w") as f:
         f.write('0.00')
-    print("Account created, inital balance: $0.00") 
+        print('Account created, initial balance is ${:.2f}\n'.format('0.00'))      
 
 # get_current_balance retrieves the last 
 def get_current_balance():
@@ -54,12 +54,19 @@ def credit(deposit):
             f.write(f'\n{deposit}')
     else:
         return print("You entered a value ")
+    
+# show all of the accounts history
+def show_history():
+    with open(filename, 'r') as f:
+        history = f.readlines()
+        for h in history:
+            print(h.replace('\\','').replace('n',', '))
 
 # this function prints the menu
 def menu():
     print('What would you like to do?')
     print()
-    print('1) view current balance\n2) record a debit (withdraw)\n3) record a credit (deposit)\n4) exit\n\n')
+    print('1) view current balance\n2) record a debit (withdraw)\n3) record a credit (deposit)\n4) display history\n5) exit\n\n')
 
 # start of main
 
@@ -69,20 +76,22 @@ print()
 while user_choice == True:
     menu()
     prompt = input('Your choice? ')
-    while prompt not in ['1', '2', '3', '4']:
+    while prompt not in ['1', '2', '3', '4', '5']:
         print(f"\nInvalid choice: {prompt}")
         menu()
         prompt = input('\nYour choice? ')
         
     print()
     if prompt == '1':
-        print(f'Your current balance is ${get_current_balance()}\n\n')
+        print('Your current balance is ${:.2f}\n'.format(get_current_balance()))
     elif prompt == '2':
         debit = input("How much is the debit? $")
         withdraw(debit)
     elif prompt == '3':
         deposit = input("How much is the deposit? $")
         credit(deposit)
+    elif prompt == '4':
+        show_history()
     else:
         user_choice = False
-print("\nThanks, have a great day!")
+print("\nThanks, have a great day!\n")
