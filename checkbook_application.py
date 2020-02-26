@@ -19,13 +19,14 @@ user_choice = True
 
 if not path.exists(filename):
     with open(filename, "w") as f:
-        f.write('0.00')
-        print('Account created, initial balance is ${:.2f}\n'.format('0.00'))      
+        init_balance = 0.00
+        f.write(init_balance)
+        print('Account created, initial balance is ${:.2f}\n'.format(init_balance))      
 
 # get_current_balance retrieves the last 
 def get_current_balance():
     with open(filename, "r") as f:
-        current_balance = 0
+        current_balance = 0.00
         balance = f.readlines()
         for b in balance:
             current_balance += float(b)
