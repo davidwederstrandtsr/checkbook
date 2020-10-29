@@ -1,6 +1,6 @@
 #                    Checkbook Application
 
-##      This application sinulates a bank account
+##      This application simulates a bank account
 
 ### View Current Balance
     - displays the current balance
