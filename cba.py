@@ -1,4 +1,4 @@
-# Command Line Checkbook Application
+# Command Line Checkbook Application ver 2.0
 # You will be creating a command line checkbook application that allows users to track their finances with a command line interface.
 
 # When run, the application should welcome the user, and prompt them for an action to take:
