@@ -5,69 +5,44 @@
 
 ##      This application simulates a bank account
 
-### View Current Balance
-    - displays the current balance
+## Method:
+#### check_currency_type
+- checks debits and deposits
+- takes user's input amount
+    - return ture if amount is a float or int
+    
+### get_current_balance
+- opens the account file
+- calcuates and returns the current balence
 
-### Record a debit (withdraw)
-    - checks current balance for available funds and debits if possible
+### menu
+- prints the menu anytime it is called
 
+### menu_input
+- request a valid input from the user
+- 'r' is include for a work in progress
 
-### Record a credit (deposit)
-    - adds funds to current balance
+### upate_account
+- open the account file with write priviledge
+- writes amount to modify account by
+    - debit = '-amount'
+    - deposit = 'amount'
+    
+### validate_amount(str)
+- str equals 'debit' or 'deposit'
+- checks the type of either withdraw or deposit
+- checks if amount if greater then 0.00
 
-### Exit
-    - closes the application
+### check_withdraw
+- checks if account is greater than 0
+- updates the account if valid
 
+### check_credit
+- checks if value is valid and updates file
 
-Application example
+### show_history
+- opens account file
+- shows transactions in order
 
-    $ python checkbook.py
-
-    ~~~ Welcome to your terminal checkbook! ~~~
-
-    What would you like to do?
-
-    1) view current balance
-    2) record a debit (withdraw)
-    3) record a credit (deposit)
-    4) exit
-
-    Your choice? 5
-    Invalid choice: 5
-
-    Your choice? 1
-
-    Your current balance is $100.00.
-
-    What would you like to do?
-
-    1) view current balance
-    2) record a debit (withdraw)
-    3) record a credit (deposit)
-    4) exit
-
-    Your choice? 2
-
-    How much is the debit? $50
-
-    What would you like to do?
-
-    1) view current balance
-    2) record a debit (withdraw)
-    3) record a credit (deposit)
-    4) exit
-
-    Your choice? 1
-
-    Your current balance is $50.00.
-
-    What would you like to do?
-
-    1) view current balance
-    2) record a debit (withdraw)
-    3) record a credit (deposit)
-    4) exit
-
-    Your choice? 4
-
-    Thanks, have a great day!
+### main
+- this is the main part of the 
