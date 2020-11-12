@@ -1,5 +1,7 @@
 #                    Checkbook Application
-- cba.py is teh updated version
+- cba.py is the updated version or version 2.0
+    - added some secutiry feature
+    - made methods that do only one thing instead of several things
 
 ##      This application simulates a bank account
 
